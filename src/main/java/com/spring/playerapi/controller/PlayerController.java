@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.playerapi.service.PlayerService;
+import com.spring.playerapi.exception.PlayerException;
 import com.spring.playerapi.model.Player;
 
 // http://localhost:8082/spring-crm-rest
@@ -37,6 +38,9 @@ public class PlayerController {
 	@GetMapping("/player")
 	public Player getPlayer(@RequestParam int id) {
 		Player player = playerService.showPlayer(id);
+		if(player == null) {
+			throw new PlayerException("Player not found of id : "+id);
+		}
 		return player;
 	}
 
@@ -44,7 +48,12 @@ public class PlayerController {
 	@GetMapping("/player/{id}")
 	public Player getPlayerWithPathVar(@PathVariable("id") int id) {
 		Player player = playerService.showPlayer(id);
+		if(player == null) {
+			throw new PlayerException("Player not found of id : "+id);
+		}
 		return player;
 	}
+	
+	
 
 }
