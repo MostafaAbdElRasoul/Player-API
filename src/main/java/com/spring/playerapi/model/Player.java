@@ -22,11 +22,14 @@ public class Player {
 	@Column(name = "player_number")
 	private int number;
 	
-	@Column(name = "player_phone")
-	private String phone;
-	
 	@Column(name = "player_address")
 	private String address;
+	
+	@Column(name = "player_phone")
+	private String phone;
+
+	public Player() {
+	}
 
 	public int getId() {
 		return id;
@@ -52,14 +55,6 @@ public class Player {
 		this.number = number;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
 	public String getAddress() {
 		return address;
 	}
@@ -68,8 +63,13 @@ public class Player {
 		this.address = address;
 	}
 
-	public Player() {
-		super();
+	public String getPhone() {
+		return phone;
 	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
 	
 }

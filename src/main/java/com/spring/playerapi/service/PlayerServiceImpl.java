@@ -12,20 +12,26 @@ import com.spring.playerapi.model.Player;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
-	
+
 	@Autowired
 	private PlayerDAO playerDao;
 	
+	
+	public PlayerServiceImpl() {
+	}
+
 	@Override
 	@Transactional
 	public List<Player> allPlayers() {
+		// begain
 		return playerDao.getPlayers();
+		// commit
 	}
 
 	@Override
 	@Transactional
 	public void savePlayer(Player player) {
-		playerDao.addPlayer(player);
+		playerDao.addPlayers(player);
 	}
 
 	@Override
@@ -37,8 +43,9 @@ public class PlayerServiceImpl implements PlayerService {
 	@Override
 	@Transactional
 	public void deletePlayer(int id) {
-		playerDao.deletePlayer(id);
+		// TODO Auto-generated method stub
+		playerDao.removePlayer(id);
+		
 	}
-
 
 }
