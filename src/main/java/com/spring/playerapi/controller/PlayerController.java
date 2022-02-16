@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,6 +54,13 @@ public class PlayerController {
 		if(player == null) {
 			throw new PlayerException("Player not found of id : "+id);
 		}
+		return player;
+	}
+	
+	// http://localhost:8082/spring-crm-rest/api/players    post method
+	@PostMapping("/players")
+	public Player createPlayer(@RequestBody Player player) {
+		playerService.savePlayer(player);
 		return player;
 	}
 	
